@@ -252,6 +252,51 @@
     </div>
   </section>
 
+  <!-- === SEAMLESS FULL-WIDTH MARQUEE SECTION === -->
+  <section class="marquee-section-container">
+    <!-- Infinite Left-to-Right Scrolling Marquee for remaining unseen beautiful pictures! -->
+    <div class="photo-marquee">
+      <div class="marquee-track">
+        <!-- Exact Duplicate Set 1 -->
+        <div class="marquee-set">
+          <img class="marquee-img" src="src/1699598724565.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20241217-WA0084.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250403-WA0665.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250410-WA0101.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250429-WA0053.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250506-WA0016.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250728-WA0016.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250929-WA0062.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250611_154055.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250703_125815.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250703_130734.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250928_113641.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250928_171847.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20251015_165704.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/Snapchat-30221113-1.jpg" alt="Memory" loading="lazy">
+        </div>
+        <!-- Exact Duplicate Set 2 strictly required for creating seamless mathematical loop -->
+        <div class="marquee-set">
+          <img class="marquee-img" src="src/1699598724565.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20241217-WA0084.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250403-WA0665.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250410-WA0101.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250429-WA0053.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250506-WA0016.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250728-WA0016.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG-20250929-WA0062.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250611_154055.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250703_125815.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250703_130734.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250928_113641.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20250928_171847.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/IMG_20251015_165704.jpg" alt="Memory" loading="lazy">
+          <img class="marquee-img" src="src/Snapchat-30221113-1.jpg" alt="Memory" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- === CAKE SECTION === -->
   <section id="cake" class="cake-section">
     <div class="cake-bg-glow"></div>
@@ -676,8 +721,8 @@
         bring you closer to the life you deserve. <strong>Happy Birthday, beautiful!</strong> 🎂✨
       </p>
       <div class="footer-social">
-        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-btn" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        <a href="#" class="social-btn" id="igModalBtn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn" id="spModalBtn" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
         <a href="#" class="social-btn" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
       </div>
       <p class="footer-copy">Crafted with love, just for you 🌸 © 2026</p>
@@ -717,6 +762,109 @@
   </button>
 
   <!-- Script -->
+  <!-- === INSTAGRAM PROFILE MODAL === -->
+  <div class="ig-modal-overlay" id="igModalOverlay">
+    <div class="ig-modal">
+      <button class="ig-close" id="igClose"><i class="fas fa-times"></i></button>
+      
+      <!-- IG Profile Header -->
+      <div class="ig-header">
+        <div class="ig-avatar">
+          <!-- Using a saree picture as seen in the dark mode mock -->
+          <img src="src/Snapchat-1829057751.jpg" alt="Profile Picture">
+        </div>
+        <div class="ig-info">
+          <div class="ig-username-row">
+            <!-- Clicking the User ID opens the actual Instagram Link! -->
+            <a href="https://www.instagram.com/rajashree.dhar.15?utm_source=qr&igsh=NTd3Njh3OXZ4bHVn" target="_blank" class="ig-username">
+              rajashree.dhar.15
+            </a>
+            <i class="fas fa-ellipsis-h ig-options"></i>
+          </div>
+          <div class="ig-name">Rajashree Dhar</div>
+          <div class="ig-stats">
+            <span><strong>73</strong> posts</span>
+            <span><strong>582</strong> followers</span>
+            <span><strong>405</strong> following</span>
+          </div>
+          <div class="ig-bio">
+            <span class="ig-blue">#bengali</span> girl<br>
+            <span class="ig-blue">##wish</span> me on 4th April 🤗<br>
+            #I'm a great patriot..I can't think anything before my country..🇮🇳 💖
+          </div>
+          <div class="ig-followed-by">
+            <div class="ig-followed-avatars">
+              <img src="src/friends/1701362678822.jpg" alt="Follower">
+              <img src="src/friends/IMG-20240324-WA0001.jpg" alt="Follower">
+              <img src="src/friends/IMG-20240326-WA0023.jpg" alt="Follower">
+            </div>
+            <span>Followed by <strong>poulami1216</strong>, <strong>lil.serene.xo</strong> + 19 more</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- IG Action Buttons -->
+      <div class="ig-actions">
+        <button class="ig-following-btn" disabled>Following <i class="fas fa-chevron-down"></i></button>
+        <button class="ig-message-btn" disabled>Message</button>
+        <button class="ig-discover-btn" disabled><i class="fas fa-user-plus"></i></button>
+      </div>
+
+      <!-- IG Highlights -->
+      <div class="ig-highlights">
+        <div class="ig-highlight">
+          <div class="ig-highlight-ring"><img src="src/1707760858213.jpg" alt="Highlight"></div>
+          <span>Highlights</span>
+        </div>
+        <div class="ig-highlight">
+          <div class="ig-highlight-ring"><img src="src/IMG-20240130-WA0098.jpg" alt="Highlight"></div>
+          <span>memories</span>
+        </div>
+      </div>
+      
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- === SPOTIFY MODAL === -->
+  <div class="spotify-modal-overlay" id="spotifyModalOverlay">
+    <button class="ig-close" id="spotifyClose" style="z-index:9999999; top: 30px; right: 30px;"><i class="fas fa-times"></i></button>
+    
+    <!-- The merged profile card -->
+    <a href="https://open.spotify.com/user/04atyqngi6jsfxgk8yqvfxnis?si=MYR3zp11SqqHepYCiBpa9g" target="_blank" class="sp-new-card">
+      
+      <!-- Top Section (Profile Header) -->
+      <div class="sp-new-top">
+        <div class="sp-new-avatar">
+          <!-- Default empty user icon exactly like the screenshot -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="#b3b3b3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        </div>
+        
+        <div class="sp-new-info">
+          <span class="sp-new-label">Profile</span>
+          <h2 class="sp-new-name">Rajashree Dhar</h2>
+          <p class="sp-new-stats">1 Public Playlist • 28 Following</p>
+        </div>
+      </div>
+      
+      <div class="sp-new-actions">
+        <button class="sp-new-follow">Follow</button>
+        <button class="sp-new-more">•••</button>
+      </div>
+
+      <!-- Bottom Section (Spotify Code) -->
+      <div class="sp-new-bottom">
+        <p class="sp-scan-text">Scan to connect on Spotify</p>
+        <!-- Dynamically generated official Spotify Code using her exact user ID -->
+        <div class="sp-code-container">
+          <img src="https://scannables.scdn.co/uri/plain/png/282828/white/640/spotify:user:04atyqngi6jsfxgk8yqvfxnis" alt="Spotify Code" class="sp-code-img">
+        </div>
+      </div>
+      
+    </a>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

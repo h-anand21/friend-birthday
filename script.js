@@ -673,29 +673,147 @@ window.showBirthdayBlast();
     setTimeout(() => { cakeWrapper.style.transform = ''; }, 200);
   });
 
-  // Subtle cake click sparkle
-  cakeWrapper.addEventListener('click', (e) => {
-    createClickSpark(e.clientX, e.clientY);
-  });
+  // We removed the cake-only listener and moved it to the entire document below.
 })();
 
-// Tiny click spark effect
+
+/* ===================================================
+   INTERACTIVE BACKGROUND BACKGROUND STARS & BALLOONS
+   =================================================== */
+
+// Tiny click spark effect (The "Star" effect!)
 function createClickSpark(x, y) {
-  const emojis = ['✨', '⭐', '🌟', '💫', '🌸'];
-  for (let i = 0; i < 6; i++) {
+  const emojis = ['✨', '⭐', '🌟', '💫', '💖'];
+  for (let i = 0; i < 5; i++) {
+    const spark = document.createElement('div');
+    spark.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    spark.style.cssText = `
+      position: fixed;
+      left: ${x}px;
+      top: ${y}px;
+      font-size: ${Math.random() * 12 + 10}px;
+      pointer-events: none;
+      z-index: 99999;
+      animation: sparkFly 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      --dx: ${(Math.random() - 0.5) * 120}px;
+      --dy: ${-(Math.random() * 90 + 30)}px;
+      --rot: ${Math.random() * 360}deg;
+    `;
+    document.body.appendChild(spark);
+    setTimeout(() => spark.remove(), 900);
   }
 }
 
-// Inject sparkFly animation
+// Global click event to spawn stars everywhere!
+document.addEventListener('click', (e) => {
+  createClickSpark(e.clientX, e.clientY);
+});
+
+// Interactive Balloon Popping!
+document.querySelectorAll('.balloon').forEach(balloon => {
+  balloon.addEventListener('click', function(e) {
+    // Prevent the body click from firing if we click a balloon (or let it fire for extra stars?)
+    // Let's just let stars spawn + balloon pop!
+    if (this.classList.contains('popped')) return;
+    
+    this.classList.add('popped');
+    
+    // Fire a localized confetti burst right where the balloon popped!
+    const rect = this.getBoundingClientRect();
+    const bx = (rect.left + rect.width / 2) / window.innerWidth;
+    const by = (rect.top + rect.height / 2) / window.innerHeight;
+    
+    if (window.confetti) {
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: { x: bx, y: by },
+        colors: ['#f72585', '#7209b7', '#4cc9f0', '#ffd166'],
+        startVelocity: 30,
+      });
+    }
+    
+    // After it completes floating up completely (if it was somehow recycled), remove it.
+    // Actually we can just leave it hidden since it has 'forwards' animation to scale(0)
+  });
+});
+
+// Inject sparkFly animation for the stars
 const sparkStyle = document.createElement('style');
 sparkStyle.textContent = `
   @keyframes sparkFly {
-    0%   { transform: translate(0, 0) scale(1); opacity: 1; }
-    100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+    0%   { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0.2) rotate(var(--rot)); opacity: 0; }
   }
 `;
 document.head.appendChild(sparkStyle);
 
+
+/* ===================================================
+   INSTAGRAM PROFILE MODAL HANDLER
+   =================================================== */
+(function initIgModal() {
+  const igBtn = document.getElementById('igModalBtn');
+  const igOverlay = document.getElementById('igModalOverlay');
+  const igClose = document.getElementById('igClose');
+
+  if (!igBtn || !igOverlay || !igClose) return;
+
+  function openIg(e) {
+    if(e) e.preventDefault();
+    igOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeIg() {
+    igOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  igBtn.addEventListener('click', openIg);
+  igClose.addEventListener('click', closeIg);
+  
+  igOverlay.addEventListener('click', (e) => {
+    // click out to close
+    if (e.target === igOverlay) closeIg();
+  });
+})();
+
+
+/* ===================================================
+   SPOTIFY MAGICAL MODAL HANDLER
+   =================================================== */
+(function initSpModal() {
+  const spBtn = document.getElementById('spModalBtn');
+  const spOverlay = document.getElementById('spotifyModalOverlay');
+  const spClose = document.getElementById('spotifyClose');
+
+  if (!spBtn || !spOverlay || !spClose) return;
+
+  function openSp(e) {
+    if(e) e.preventDefault();
+    spOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSp(e) {
+    if(e) e.preventDefault();
+    spOverlay.classList.remove('active');
+    
+    // Only restore scroll if we didn't just hop over to IG modal instead
+    const igOverlay = document.getElementById('igModalOverlay');
+    if (!igOverlay || !igOverlay.classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  spBtn.addEventListener('click', openSp);
+  spClose.addEventListener('click', closeSp);
+  
+  spOverlay.addEventListener('click', (e) => {
+    if (e.target === spOverlay) closeSp();
+  });
+})();
 
 /* ===================================================
    7. ENVELOPE — OPEN LETTER
