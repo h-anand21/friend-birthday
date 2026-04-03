@@ -720,48 +720,41 @@ document.head.appendChild(sparkStyle);
 
 
 /* ===================================================
-   8. TOAST BUTTON — MODAL + CHAMPAGNE CONFETTI
+   8. DIGITAL GIFT BOX INTERACTION
    =================================================== */
-(function initToast() {
-  const toastBtn     = document.getElementById('toastBtn');
-  const heroJoinBtn  = document.getElementById('heroJoinBtn');
-  const modalOverlay = document.getElementById('modalOverlay');
-  const modalClose   = document.getElementById('modalClose');
-  const modalDismiss = document.getElementById('modalDismiss');
-  const toastBtnText = document.getElementById('toastBtnText');
+(function initGiftBox() {
+  const giftBoxBtn = document.getElementById('giftBoxBtn');
+  const theGift = document.querySelector('.the-gift');
+  const giftHint = document.getElementById('giftHint');
+  let opened = false;
 
-  function openModal() {
-    modalOverlay.classList.add('active');
-    // Golden champagne confetti!
-    launchConfetti(4000);
-    if(toastBtnText) toastBtnText.innerHTML = '<i class="fas fa-glass-cheers"></i> Cheers! ✨';
-  }
+  if (giftBoxBtn && theGift) {
+    giftBoxBtn.addEventListener('click', () => {
+      if (opened) return;
+      opened = true;
+      theGift.classList.add('opened');
+      if (giftHint) giftHint.style.display = 'none';
 
-  function closeModal() {
-    modalOverlay.classList.remove('active');
-  }
+      // Fire a special colored burst of confetti from the gift box!
+      const rect = giftBoxBtn.getBoundingClientRect();
+      const originX = (rect.left + rect.width / 2) / window.innerWidth;
+      const originY = (rect.top + rect.height / 2) / window.innerHeight;
 
-  if (toastBtn) toastBtn.addEventListener('click', openModal);
-  if (heroJoinBtn) heroJoinBtn.addEventListener('click', () => {
-    document.getElementById('toast').scrollIntoView({ behavior: 'smooth' });
-    setTimeout(openModal, 800);
-  });
-  if (modalClose)   modalClose.addEventListener('click', closeModal);
-  if (modalDismiss) modalDismiss.addEventListener('click', closeModal);
-
-  // Close on overlay click
-  if (modalOverlay) {
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) closeModal();
+      if (window.confetti) {
+        confetti({
+          particleCount: 150,
+          spread: 100,
+          origin: { x: originX, y: originY },
+          colors: ['#f72585', '#7209b7', '#3a0ca3', '#4cc9f0', '#ffffff'],
+          startVelocity: 45,
+          gravity: 1.2
+        });
+      } else {
+        launchConfetti(2000); 
+      }
     });
   }
-
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
 })();
-
 
 /* ===================================================
    9. BIRTHDAY MUSIC TOGGLE
@@ -1035,18 +1028,7 @@ document.querySelectorAll('.fh').forEach(heart => {
 
 
 /* ===================================================
-   19. INFINITE MARQUEE SCROLL (PHOTOS)
-   =================================================== */
-(function initMarquee() {
-  const photosGrid = document.getElementById('photosGrid');
-  if (photosGrid) {
-    // Clone contents once to allow seamless CSS infinite scroll wrapper
-    photosGrid.innerHTML += photosGrid.innerHTML;
-  }
-})();
-
-/* ===================================================
-   20. SMOOTH SCROLL FOR ALL ANCHOR LINKS
+   19. SMOOTH SCROLL FOR ALL ANCHOR LINKS
    =================================================== */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', function (e) {
