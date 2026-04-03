@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🎂 | Rajashree Dhar — A Surprise Just For You</title>
+  <meta name="description" content="A special birthday celebration page crafted with love for Rajashree Dhar." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700;800&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- === PARTICLE CANVAS (Sparkles) === -->
+  <canvas id="sparkleCanvas"></canvas>
+
+  <!-- === CONFETTI CANVAS === -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- === FLOATING BALLOONS === -->
+  <div class="balloons-container" id="balloonsContainer">
+    <div class="balloon b1"><span class="balloon-string"></span></div>
+    <div class="balloon b2"><span class="balloon-string"></span></div>
+    <div class="balloon b3"><span class="balloon-string"></span></div>
+    <div class="balloon b4"><span class="balloon-string"></span></div>
+    <div class="balloon b5"><span class="balloon-string"></span></div>
+    <div class="balloon b6"><span class="balloon-string"></span></div>
+    <div class="balloon b7"><span class="balloon-string"></span></div>
+  </div>
+
+  <!-- === NAVIGATION (Floating Pill Dark Navbar) === -->
+  <nav id="navbar">
+    <!-- Logo — left side -->
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+      <span>BirthdayVibes</span>
+    </div>
+
+    <!-- Center pill navigation -->
+    <div class="nav-pill">
+      <a href="#hero"     class="nav-pill-link active" id="nav-home">
+        <i class="fas fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="#photos"   class="nav-pill-link" id="nav-photos">
+        <i class="fas fa-images"></i>
+        <span>Memories</span>
+      </a>
+      <a href="#cake"     class="nav-pill-link" id="nav-cake">
+        <i class="fas fa-cake-candles"></i>
+        <span>Cake</span>
+      </a>
+      <a href="#messages" class="nav-pill-link" id="nav-messages">
+        <i class="fas fa-envelope-heart"></i>
+        <span>Wishes</span>
+      </a>
+      <div class="nav-pill-indicator" id="navIndicator"></div>
+    </div>
+
+    <!-- Right side CTA -->
+    <a href="#rsvp" class="nav-cta" id="nav-rsvp">
+      <i class="fas fa-champagne-glasses"></i>
+      <span>Join Party</span>
+    </a>
+
+    <!-- Mobile hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <span class="mobile-logo-text">🎀 BirthdayVibes</span>
+      <button class="mobile-close" onclick="closeMobileMenu()"><i class="fas fa-xmark"></i></button>
+    </div>
+    <ul>
+      <li><a href="#hero"     onclick="closeMobileMenu()"><i class="fas fa-house"></i> Home</a></li>
+      <li><a href="#photos"   onclick="closeMobileMenu()"><i class="fas fa-images"></i> Memories</a></li>
+      <li><a href="#cake"     onclick="closeMobileMenu()"><i class="fas fa-cake-candles"></i> Celebration</a></li>
+      <li><a href="#messages" onclick="closeMobileMenu()"><i class="fas fa-envelope-heart"></i> Messages</a></li>
+      <li><a href="#rsvp"     onclick="closeMobileMenu()" class="mobile-cta"><i class="fas fa-champagne-glasses"></i> Join Party 🎉</a></li>
+    </ul>
+  </div>
+
+  <!-- === HERO SECTION === -->
+  <section id="hero" class="hero-section">
+    <div class="hero-stars" id="heroStars"></div>
+
+    <!-- Floating image orbs background -->
+    <div class="hero-img-orbs" id="heroImgOrbs">
+      <div class="img-orb orb1"><img src="src/Snapchat-1573921257.jpg" alt="Rajashree Dhar" /></div>
+      <div class="img-orb orb2"><img src="src/Snapchat-1829057751.jpg" alt="Rajashree Dhar" /></div>
+      <div class="img-orb orb3"><img src="src/IMG-20231111-WA0040.jpg" alt="Rajashree Dhar" /></div>
+      <div class="img-orb orb4"><img src="src/IMG-20240117-WA0134.jpg" alt="Rajashree Dhar" /></div>
+      <div class="img-orb orb5"><img src="src/IMG_20240323_184223_827.jpg" alt="Rajashree Dhar" /></div>
+      <div class="img-orb orb6"><img src="src/Snapchat-464783577.jpg" alt="Rajashree Dhar" /></div>
+    </div>
+
+    <!-- Left: Main hero portrait -->
+    <div class="hero-portrait-wrap">
+      <div class="hero-portrait-ring"></div>
+      <div class="hero-portrait-ring ring2"></div>
+      <div class="hero-portrait">
+        <img src="src/Snapchat-30221113.jpg" alt="Birthday Girl Rajashree Dhar" id="heroPrimaryImg" />
+      </div>
+      <div class="hero-portrait-badge">🎂 Birthday Girl</div>
+      <!-- Slide-in small thumbnails -->
+      <div class="hero-thumbs">
+        <div class="hero-thumb active" data-src="src/Snapchat-30221113.jpg"><img src="src/Snapchat-30221113.jpg" alt=""/></div>
+        <div class="hero-thumb" data-src="src/Snapchat-1573921257.jpg"><img src="src/Snapchat-1573921257.jpg" alt=""/></div>
+        <div class="hero-thumb" data-src="src/IMG-20250228-WA0002.jpg"><img src="src/IMG-20250228-WA0002.jpg" alt=""/></div>
+        <div class="hero-thumb" data-src="src/IMG-20240404-WA0025.jpg"><img src="src/IMG-20240404-WA0025.jpg" alt=""/></div>
+      </div>
+    </div>
+
+    <!-- Right: Text content -->
+    <div class="hero-content">
+      <div class="hero-tag">✨ Today Is Extra Special ✨</div>
+      <h1 class="hero-name">Happy Birthday,<br /><span class="name-highlight">Rajashree!</span></h1>
+      <p class="hero-message">
+        On this magical day, the universe shines a little brighter because
+        you were born into it. You are sunshine in human form,
+        and this little corner of the internet is just for you. 🌸
+      </p>
+      <div class="hero-buttons">
+        <a href="#toast" class="btn-primary" id="heroJoinBtn">
+          <i class="fas fa-glass-cheers"></i> A Special Toast
+        </a>
+        <a href="#photos" class="btn-ghost">
+          <i class="fas fa-images"></i> See Memories
+        </a>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-dot"></div>
+        <span>Scroll to explore</span>
+      </div>
+
+      <!-- Countdown Timer -->
+      <div class="countdown-wrapper" id="countdownWrapper">
+        <div class="countdown-label">🎂 Days Until Next Birthday</div>
+        <div class="countdown-grid">
+          <div class="countdown-item"><span id="cd-days">00</span><label>Days</label></div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item"><span id="cd-hours">00</span><label>Hours</label></div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item"><span id="cd-mins">00</span><label>Mins</label></div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item"><span id="cd-secs">00</span><label>Secs</label></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === PHOTO SHOWCASE SECTION === -->
+  <section id="photos" class="photos-section">
+    <div class="section-header">
+      <span class="section-tag">📸 Our Memories</span>
+      <h2 class="section-title">Captured Moments</h2>
+      <p class="section-subtitle">Every frame tells a story. Every smile holds a thousand words.</p>
+    </div>
+
+    <div class="photos-grid-wrapper">
+      <div class="photos-grid" id="photosGrid">
+      <!-- Photo Card 1 — Featured -->
+      <div class="photo-card featured" id="photo-card-1">
+        <div class="photo-frame">
+          <img src="src/1699598722875.jpg" alt="Best Friends Forever" loading="lazy" />
+          <div class="photo-sticker">❤️</div>
+          <div class="photo-overlay"><div class="photo-tag">Best Friends Forever 💕</div></div>
+        </div>
+        <div class="polaroid-caption">Our favourite moments together 🌸</div>
+      </div>
+
+      <!-- Photo Card 2 -->
+      <div class="photo-card" id="photo-card-2">
+        <div class="photo-frame">
+          <img src="src/1707760858213.jpg" alt="Campus Vibes" loading="lazy" />
+          <div class="photo-sticker">🌼</div>
+          <div class="photo-overlay"><div class="photo-tag">College Life 🎓</div></div>
+        </div>
+        <div class="polaroid-caption">Campus walks & good vibes 📚</div>
+      </div>
+
+      <!-- Photo Card 3 -->
+      <div class="photo-card" id="photo-card-3">
+        <div class="photo-frame">
+          <img src="src/IMG-20240130-WA0098.jpg" alt="Adventure Time" loading="lazy" />
+          <div class="photo-sticker">🦋</div>
+          <div class="photo-overlay"><div class="photo-tag">Girls Trip 🛍️</div></div>
+        </div>
+        <div class="polaroid-caption">Adventure & shopping chaos 👜</div>
+      </div>
+
+      <!-- Photo Card 4 -->
+      <div class="photo-card" id="photo-card-4">
+        <div class="photo-frame">
+          <img src="src/IMG-20241007-WA0177.jpg" alt="Golden Moments" loading="lazy" />
+          <div class="photo-sticker">✨</div>
+          <div class="photo-overlay"><div class="photo-tag">Golden Hours ✨</div></div>
+        </div>
+        <div class="polaroid-caption">Chasing sunsets together 🧡</div>
+      </div>
+
+      <!-- Photo Card 5 -->
+      <div class="photo-card" id="photo-card-5">
+        <div class="photo-frame">
+          <img src="src/IMG-20241217-WA0076.jpg" alt="Priceless Laughs" loading="lazy" />
+          <div class="photo-sticker">😂</div>
+          <div class="photo-overlay"><div class="photo-tag">Candid Moments 🎭</div></div>
+        </div>
+        <div class="polaroid-caption">When the jokes hit differently 😂</div>
+      </div>
+
+      <!-- Photo Card 6 -->
+      <div class="photo-card" id="photo-card-6">
+        <div class="photo-frame">
+          <img src="src/IMG-20250225-WA0013.jpg" alt="Selfie Vibes" loading="lazy" />
+          <div class="photo-sticker">🤳</div>
+          <div class="photo-overlay"><div class="photo-tag">Selfie Queen 📸</div></div>
+        </div>
+        <div class="polaroid-caption">She always knows the angle 💅</div>
+      </div>
+
+      <!-- Photo Card 7 -->
+      <div class="photo-card" id="photo-card-7">
+        <div class="photo-frame">
+          <img src="src/IMG-20250327-WA0033.jpg" alt="Glow Up" loading="lazy" />
+          <div class="photo-sticker">🌟</div>
+          <div class="photo-overlay"><div class="photo-tag">Absolute Glow ✨</div></div>
+        </div>
+        <div class="polaroid-caption">Glowing like always 🌺</div>
+      </div>
+
+      <!-- Photo Card 8 -->
+      <div class="photo-card" id="photo-card-8">
+        <div class="photo-frame">
+          <img src="src/IMG-20251015-WA0346.jpg" alt="Latest Vibes" loading="lazy" />
+          <div class="photo-sticker">🎀</div>
+          <div class="photo-overlay"><div class="photo-tag">Recent Vibes 🎀</div></div>
+        </div>
+        <div class="polaroid-caption">Still glowing, still growing 💜</div>
+      </div>
+
+      <!-- Photo Card 9 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/IMG-20251210-WA0777.jpg" alt="Beautiful Moment 1" loading="lazy" />
+          <div class="photo-sticker">🥰</div>
+          <div class="photo-overlay"><div class="photo-tag">Sweet Smiles 😊</div></div>
+        </div>
+        <div class="polaroid-caption">A memory worth keeping 💖</div>
+      </div>
+
+      <!-- Photo Card 10 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/IMG_20250703_125815.jpg" alt="Beautiful Moment 2" loading="lazy" />
+          <div class="photo-sticker">✨</div>
+          <div class="photo-overlay"><div class="photo-tag">Sparkle ✨</div></div>
+        </div>
+        <div class="polaroid-caption">Just beautiful ✨</div>
+      </div>
+
+      <!-- Photo Card 11 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/IMG-20231111-WA0040.jpg" alt="Beautiful Moment 3" loading="lazy" />
+          <div class="photo-sticker">🌟</div>
+          <div class="photo-overlay"><div class="photo-tag">Flashback 🌻</div></div>
+        </div>
+        <div class="polaroid-caption">Good old days 🎈</div>
+      </div>
+
+      <!-- Photo Card 12 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/IMG_20250611_154055.jpg" alt="Beautiful Moment 4" loading="lazy" />
+          <div class="photo-sticker">❤️</div>
+          <div class="photo-overlay"><div class="photo-tag">Precious 💎</div></div>
+        </div>
+        <div class="polaroid-caption">This picture has my whole heart 💕</div>
+      </div>
+
+      <!-- Photo Card 13 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/IMG-20240117-WA0134.jpg" alt="Beautiful Moment 5" loading="lazy" />
+          <div class="photo-sticker">🌷</div>
+          <div class="photo-overlay"><div class="photo-tag">Graceful ✨</div></div>
+        </div>
+        <div class="polaroid-caption">Stunning as always 🌸</div>
+      </div>
+
+      <!-- Photo Card 14 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/IMG_20250928_113641.jpg" alt="Beautiful Moment 6" loading="lazy" />
+          <div class="photo-sticker">🦋</div>
+          <div class="photo-overlay"><div class="photo-tag">Aesthetic 🎨</div></div>
+        </div>
+        <div class="polaroid-caption">A perfect candid! 📷</div>
+      </div>
+
+      <!-- Photo Card 15 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/Snapchat-1573921257.jpg" alt="Beautiful Moment 7" loading="lazy" />
+          <div class="photo-sticker">✌️</div>
+          <div class="photo-overlay"><div class="photo-tag">Fun Times 🥳</div></div>
+        </div>
+        <div class="polaroid-caption">Never a dull moment! 🥂</div>
+      </div>
+
+      <!-- Photo Card 16 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/IMG_20240323_184223_827.jpg" alt="Beautiful Moment 8" loading="lazy" />
+          <div class="photo-sticker">🥰</div>
+          <div class="photo-overlay"><div class="photo-tag">Looking Back 🕰️</div></div>
+        </div>
+        <div class="polaroid-caption">Time flies, memories don't 🕰️</div>
+      </div>
+
+      <!-- Photo Card 17 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/IMG-20250410-WA0101.jpg" alt="Beautiful Moment 9" loading="lazy" />
+          <div class="photo-sticker">🌺</div>
+          <div class="photo-overlay"><div class="photo-tag">Happiness ☀️</div></div>
+        </div>
+        <div class="polaroid-caption">That smile though 🥺💖</div>
+      </div>
+
+      <!-- Photo Card 18 -->
+      <div class="photo-card">
+        <div class="photo-frame">
+          <img src="src/IMG_20251015_165704.jpg" alt="Beautiful Moment 10" loading="lazy" />
+          <div class="photo-sticker">💫</div>
+          <div class="photo-overlay"><div class="photo-tag">Living Life 💫</div></div>
+        </div>
+        <div class="polaroid-caption">Cheers to you! 🍾</div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- === CAKE SECTION === -->
+  <section id="cake" class="cake-section">
+    <div class="cake-bg-glow"></div>
+    <div class="section-header">
+      <span class="section-tag">🎂 Make a Wish</span>
+      <h2 class="section-title">Blow Out the Candles</h2>
+      <p class="section-subtitle">Close your eyes, take a deep breath, and make your most magical wish!</p>
+    </div>
+
+    <div class="cake-area">
+      <!-- CSS Birthday Cake -->
+      <div class="cake-wrapper" id="cakeWrapper">
+        <!-- Candles -->
+        <div class="candles-row">
+          <div class="candle" id="candle1">
+            <div class="flame-wrap"><div class="flame"></div><div class="flame-glow"></div></div>
+          </div>
+          <div class="candle" id="candle2">
+            <div class="flame-wrap"><div class="flame"></div><div class="flame-glow"></div></div>
+          </div>
+          <div class="candle" id="candle3">
+            <div class="flame-wrap"><div class="flame"></div><div class="flame-glow"></div></div>
+          </div>
+          <div class="candle" id="candle4">
+            <div class="flame-wrap"><div class="flame"></div><div class="flame-glow"></div></div>
+          </div>
+          <div class="candle" id="candle5">
+            <div class="flame-wrap"><div class="flame"></div><div class="flame-glow"></div></div>
+          </div>
+        </div>
+
+        <!-- Cake Tiers -->
+        <div class="cake-top-tier">
+          <div class="cake-decoration">
+            <div class="deco-pearl"></div><div class="deco-pearl"></div><div class="deco-pearl"></div>
+            <div class="deco-pearl"></div><div class="deco-pearl"></div>
+          </div>
+          <div class="frosting-drip"></div>
+        </div>
+        <div class="cake-mid-tier">
+          <div class="cake-flower">🌸</div>
+          <div class="cake-flower">🌸</div>
+          <div class="cake-flower">🌸</div>
+          <div class="frosting-drip"></div>
+        </div>
+        <div class="cake-bottom-tier">
+          <div class="cake-text-wrap">
+            <span class="cake-text">Happy Birthday!</span>
+          </div>
+          <div class="cake-ribbon"></div>
+        </div>
+        <div class="cake-plate"></div>
+
+        <!-- Wish granted overlay -->
+        <div class="wish-overlay" id="wishOverlay">
+          <div class="wish-text">🌟 Wish Granted! 🌟</div>
+        </div>
+
+        <!-- Virtual friends congratulating (Clockwise Spiral Pattern!) -->
+        <div class="virtual-crowd" id="virtualCrowd">
+          <div class="vc-friend" style="--angle:0deg; --dist:250px; --delay:0.00s; --tilt:10deg; --scale:0.9;"><img src="src/group pic of friend/1699598723588.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:13deg; --dist:360px; --delay:0.05s; --tilt:-12deg; --scale:1.0;"><img src="src/group pic of friend/IMG-20231005-WA0067.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:26deg; --dist:480px; --delay:0.10s; --tilt:8deg; --scale:1.1;"><img src="src/group pic of friend/IMG-20231213-WA0019.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:39deg; --dist:250px; --delay:0.15s; --tilt:-15deg; --scale:0.85;"><img src="src/group pic of friend/IMG-20240108-WA0025.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:52deg; --dist:360px; --delay:0.20s; --tilt:12deg; --scale:0.95;"><img src="src/group pic of friend/IMG-20240117-WA0053.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:65deg; --dist:480px; --delay:0.25s; --tilt:-8deg; --scale:1.05;"><img src="src/group pic of friend/IMG-20240126-WA0081.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:78deg; --dist:250px; --delay:0.30s; --tilt:15deg; --scale:0.9;"><img src="src/group pic of friend/IMG-20240221-WA0080.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:91deg; --dist:360px; --delay:0.35s; --tilt:-10deg; --scale:1.0;"><img src="src/group pic of friend/IMG-20240322-WA0043.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:104deg; --dist:480px; --delay:0.40s; --tilt:10deg; --scale:1.1;"><img src="src/group pic of friend/IMG-20240419-WA0053.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:117deg; --dist:250px; --delay:0.45s; --tilt:-14deg; --scale:0.85;"><img src="src/group pic of friend/IMG-20240419-WA0263.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:130deg; --dist:360px; --delay:0.50s; --tilt:9deg; --scale:0.95;"><img src="src/group pic of friend/IMG-20240615-WA0014.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:143deg; --dist:480px; --delay:0.55s; --tilt:-11deg; --scale:1.05;"><img src="src/group pic of friend/IMG-20240619-WA0077.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:156deg; --dist:250px; --delay:0.60s; --tilt:14deg; --scale:0.9;"><img src="src/group pic of friend/IMG-20240909-WA0097.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:169deg; --dist:360px; --delay:0.65s; --tilt:-9deg; --scale:1.0;"><img src="src/group pic of friend/IMG-20240928-WA0056.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:182deg; --dist:480px; --delay:0.70s; --tilt:11deg; --scale:1.1;"><img src="src/group pic of friend/IMG-20241217-WA0064.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:195deg; --dist:250px; --delay:0.75s; --tilt:-10deg; --scale:0.85;"><img src="src/group pic of friend/IMG-20250121-WA0019.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:208deg; --dist:360px; --delay:0.80s; --tilt:13deg; --scale:0.95;"><img src="src/group pic of friend/IMG-20250123-WA0001.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:221deg; --dist:480px; --delay:0.85s; --tilt:-13deg; --scale:1.05;"><img src="src/group pic of friend/IMG-20250211-WA0040.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:234deg; --dist:250px; --delay:0.90s; --tilt:10deg; --scale:0.9;"><img src="src/group pic of friend/IMG-20250429-WA0071.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:247deg; --dist:360px; --delay:0.95s; --tilt:-8deg; --scale:1.0;"><img src="src/group pic of friend/IMG-20250530-WA0030.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:260deg; --dist:480px; --delay:1.00s; --tilt:12deg; --scale:1.1;"><img src="src/group pic of friend/IMG-20250611-WA0027.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:273deg; --dist:250px; --delay:1.05s; --tilt:-15deg; --scale:0.85;"><img src="src/group pic of friend/IMG-20250611-WA0105.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:286deg; --dist:360px; --delay:1.10s; --tilt:8deg; --scale:0.95;"><img src="src/group pic of friend/IMG-20250916-WA0000.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:299deg; --dist:480px; --delay:1.15s; --tilt:-12deg; --scale:1.05;"><img src="src/group pic of friend/IMG-20250917-WA0014.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:312deg; --dist:250px; --delay:1.20s; --tilt:15deg; --scale:0.9;"><img src="src/group pic of friend/IMG-20250929-WA0072.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:325deg; --dist:360px; --delay:1.25s; --tilt:-10deg; --scale:1.0;"><img src="src/group pic of friend/IMG_0345.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:338deg; --dist:480px; --delay:1.30s; --tilt:10deg; --scale:1.1;"><img src="src/group pic of friend/IMG_20250928_131355.jpg" alt="Group"></div>
+          <div class="vc-friend" style="--angle:351deg; --dist:350px; --delay:1.35s; --tilt:-8deg; --scale:0.9;"><img src="src/group pic of friend/IMG_20250928_183404.jpg" alt="Group"></div>
+        </div>
+      </div>
+
+      <button class="btn-blow" id="blowBtn">
+        <i class="fas fa-wind"></i> Blow Candles!
+      </button>
+      <p class="cake-hint" id="cakeHint">Click the button to blow out all candles ✨</p>
+    </div>
+  </section>
+
+  <!-- === MESSAGE CARDS SECTION === -->
+  <section id="messages" class="messages-section">
+    <div class="section-header">
+      <span class="section-tag">💌 From the Heart</span>
+      <h2 class="section-title">Sweet Birthday Wishes</h2>
+      <p class="section-subtitle">Your favourite people have something special to say to you today 🎂</p>
+    </div>
+
+    <!-- Friends Wish Carousel -->
+    <div class="friends-wish-track-wrap">
+      <button class="fw-arrow fw-prev" id="fwPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <div class="friends-wish-track-clip">
+        <div class="friends-wish-track" id="friendsWishTrack">
+
+        <!-- 1. Arisha -->
+        <div class="fw-card" id="fw-arisha">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/arisha.jpg" alt="Arisha" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">🌸</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Arisha</div>
+              <div class="fw-relation">Your College Friend 🎓</div>
+              <p class="fw-msg">
+                "Rajashree, every time I see your smile I feel like everything's going to be okay.
+                You have this warmth that makes everyone around you feel special.
+                Wishing you the most beautiful year ahead — full of joy, growth and every little thing
+                that makes your heart happy. Happy Birthday, lovely! 🌺"
+              </p>
+              <div class="fw-sign">— Arisha 💕</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+        <!-- 2. Deepak -->
+        <div class="fw-card" id="fw-deepak">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/deepak.jpg" alt="Deepak" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">🎉</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Deepak</div>
+              <div class="fw-relation">The Fun One 😎</div>
+              <p class="fw-msg">
+                "Dost, teri birthday pe ek hi wish hai — bas khush reh! Seriously though,
+                you're one of those rare people who makes even boring college days feel like an adventure.
+                May this year bring you everything you've been working so hard for.
+                Khub khao, khub haso, aur celebrate karo aaj! Happy Birthday! 🎂🔥"
+              </p>
+              <div class="fw-sign">— Deepak 🙌</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+        <!-- 3. Gaurav -->
+        <div class="fw-card" id="fw-gaurav">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/gaurav.jpg" alt="Gaurav" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">⭐</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Gaurav</div>
+              <div class="fw-relation">Always There 🤝</div>
+              <p class="fw-msg">
+                "Rajashree, I've seen how much you give to everyone around you — your time,
+                your energy, your laughter. Today is YOUR day to receive all of that back.
+                You deserve literally everything good this life has to offer.
+                May your birthday be as bright and extraordinary as you are! Happy Birthday! ✨"
+              </p>
+              <div class="fw-sign">— Gaurav 🌟</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+        <!-- 4. Himu -->
+        <div class="fw-card" id="fw-himu">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/himu.jpg" alt="Himu" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">🦋</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Himu</div>
+              <div class="fw-relation">Bihari Babu 💖</div>
+              <p class="fw-msg">
+              "May your day be filled with smiles, laughter, and lots of happiness. Tu hamesha aise hi khush raho, mast raho, aur life
+              me bahut aage badho. Aur haan, cake ka ek piece humko bhi milna chahiye 😄🥰🎂"
+              </p>
+              <div class="fw-sign">— Himu 🫶</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+        <!-- 5. Krish -->
+        <div class="fw-card" id="fw-krish">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/krish.jpg" alt="Krish" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">🎈</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Krish</div>
+              <div class="fw-relation">College Buddy 📚</div>
+              <p class="fw-msg">
+                "Happy Birthday Rajashree! You know what's special about you?
+                You never make anyone feel left out or small. You have this incredible ability
+                to make every person around you feel valued. That's a rare gift.
+                May this year bring you adventures, laughter, and all the success you deserve! 🎊"
+              </p>
+              <div class="fw-sign">— Krish 🎉</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+        <!-- 6. Niloy -->
+        <div class="fw-card" id="fw-niloy">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/niloy.jpg" alt="Niloy" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">🚀</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Niloy</div>
+              <div class="fw-relation">Gang Member 😂</div>
+              <p class="fw-msg">
+                "Rajashree di, aaj tera birthday hai toh kuch zyada hi emotional feel ho raha hai!
+                Seriously, you're one of the most genuine people I know.
+                No fake drama, no gossip, just pure love and support — always.
+                Wishing you a year full of happiness, new opportunities, and of course — good food! 🍰🎂"
+              </p>
+              <div class="fw-sign">— Niloy 😄</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+        <!-- 7. Partiksha -->
+        <div class="fw-card" id="fw-partiksha">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/partiksha.jpg" alt="Partiksha" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">🌷</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Partiksha</div>
+              <div class="fw-relation">Sunshine Friend ☀️</div>
+              <p class="fw-msg">
+                "Rajashree, meeting you was one of the best things that happened to me in college.
+                You make every ordinary moment special just by being in it.
+                Your energy, your care, your goofiness — I love everything about you!
+                Hope this birthday is the start of your most beautiful chapter yet. Happy Birthday! 💐"
+              </p>
+              <div class="fw-sign">— Partiksha 🌸</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+        <!-- 8. Polo -->
+        <div class="fw-card" id="fw-polo">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/polo.jpg" alt="Polo" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">🎶</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Polo</div>
+              <div class="fw-relation">Vibe Check ✅</div>
+              <p class="fw-msg">
+                "Happy Birthday Rajashree! If there's one thing I've learned from you,
+                it's how to be kind without expecting anything back.
+                You're the realest person I know and that is so hard to find these days.
+                May this year be everything you've ever dreamed of and more. You deserve it all! 🎁✨"
+              </p>
+              <div class="fw-sign">— Polo 🤍</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+        <!-- 9. Shiny -->
+        <div class="fw-card" id="fw-shiny">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/shiny.jpg" alt="Shiny" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">💫</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Shiny</div>
+              <div class="fw-relation">Study Partner 📖</div>
+              <p class="fw-msg">
+                "Raju! Happy Birthday! 🎉 Remember all those times we were panicking before exams
+                and you somehow always managed to calm everyone down? That's just YOU.
+                You are the kind of person who holds everyone together.
+                I hope today you feel all the love you always give to others — you deserve it so much! 💝"
+              </p>
+              <div class="fw-sign">— Shiny 🌟</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+        <!-- 10. Shreya -->
+        <div class="fw-card" id="fw-shreya">
+          <div class="fw-card-inner">
+            <div class="fw-avatar-wrap">
+              <img src="src/friends/shreya.jpg" alt="Shreya" class="fw-avatar" />
+              <div class="fw-avatar-ring"></div>
+              <span class="fw-emoji">🎀</span>
+            </div>
+            <div class="fw-body">
+              <div class="fw-name">Shreya</div>
+              <div class="fw-relation">My Person 💞</div>
+              <p class="fw-msg">
+                "Rajashree Dhar! My absolute favourite chaotic, warm-hearted, funny, beautiful human being!
+                I still can't believe I got lucky enough to have you as my friend.
+                You make every day brighter, every problem smaller, and every laugh louder.
+                Here's to you today and every single day — grow, glow, and keep being your magical self! 🥂🎂"
+              </p>
+              <div class="fw-sign">— Shreya 💖</div>
+            </div>
+          </div>
+          <div class="fw-card-glow"></div>
+        </div>
+
+      </div><!-- end track -->
+      </div><!-- end clip -->
+      <button class="fw-arrow fw-next" id="fwNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Dot indicators -->
+    <div class="fw-dots" id="fwDots"></div>
+
+    <!-- Personalized Envelope -->
+    <div class="envelope-wrapper" id="envelopeWrapper">
+      <div class="envelope" id="envelope">
+        <div class="envelope-flap" id="envelopeFlap"></div>
+        <div class="envelope-body">
+          <div class="envelope-letter" id="envelopeLetter">
+            <div class="letter-content">
+              <div class="letter-header">
+                <span>💌 A Special Note</span>
+              </div>
+              <p>Dear Rajashree,</p>
+              <p>
+                "Birthday wishes 🌻
+                You’ve been a great friend, from chaos moments to calm talks. I really enjoy every moment we spend, even the simple
+                ones. Stay happy, keep shining, and keep moving forward. You truly deserve all the happiness and success in life."
+              </p>
+              <p class="letter-sign">With love always, <br/><em>Your Friends 🎀</em></p>
+            </div>
+          </div>
+        </div>
+        <div class="envelope-seal" id="envelopeSeal">💝</div>
+      </div>
+      <button class="btn-open-letter" id="openLetterBtn">
+        <i class="fas fa-envelope-open-text"></i> Open Your Letter
+      </button>
+    </div>
+  </section>
+
+  <!-- === A SPECIAL TOAST SECTION === -->
+  <section id="toast" class="rsvp-section">
+    <div class="rsvp-glow"></div>
+    <div class="rsvp-content">
+      <div class="gift-icons-row">
+        <span class="gift-icon gi1">✨</span>
+        <span class="gift-icon gi2">💖</span>
+        <span class="gift-icon gi3">🥂</span>
+        <span class="gift-icon gi4">🌟</span>
+        <span class="gift-icon gi5">👑</span>
+      </div>
+      <span class="section-tag">🥂 A Special Toast!</span>
+      <h2 class="rsvp-title">Cheers to You, Rajashree!</h2>
+      <p class="rsvp-subtitle">
+        Here's to a year filled with unexpected joys, endless happiness, and dreams coming true. May your life align beautifully with your kindest thoughts. ✨
+      </p>
+
+      <div class="party-details toast-wishes" style="display: flex; justify-content: center; padding: 20px 0; border: none; background: transparent; box-shadow: none;">
+        <ul style="list-style: none; padding: 0; text-align: left; font-size: 1.1rem; line-height: 2.2; color: var(--text-secondary);">
+          <li>🌟 <strong>Success</strong> — A year of brilliant growth and wins.</li>
+          <li>💖 <strong>Love</strong> — Surrounded by those who treasure you.</li>
+          <li>✈️ <strong>Adventures</strong> — Beautiful journeys and magic moments.</li>
+          <li>🦋 <strong>Joy</strong> — Peace, health, and a heart full of light.</li>
+        </ul>
+      </div>
+
+      <button class="btn-rsvp" id="toastBtn">
+        <span class="btn-text" id="toastBtnText"><i class="fas fa-glass-cheers"></i> Pop the Champagne! 🍾</span>
+        <div class="btn-ripple"></div>
+      </button>
+
+      <p class="rsvp-note">
+        * You deserve the absolute world, keep shining! 💜
+      </p>
+
+      <!-- Music Toggle -->
+      <div class="music-toggle" id="musicToggle" title="Toggle birthday music">
+        <i class="fas fa-music" id="musicIcon"></i>
+        <span id="musicLabel">Play Music 🎵</span>
+        <audio id="birthdayAudio" loop>
+          <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" type="audio/ogg" />
+        </audio>
+      </div>
+    </div>
+  </section>
+
+  <!-- === FOOTER === -->
+  <footer class="footer-section">
+    <div class="footer-stars"></div>
+    <div class="footer-content">
+      <div class="footer-hearts">
+        <span class="fh" style="--i:1">💖</span>
+        <span class="fh" style="--i:2">💝</span>
+        <span class="fh" style="--i:3">💘</span>
+        <span class="fh" style="--i:4">💗</span>
+        <span class="fh" style="--i:5">💓</span>
+      </div>
+      <h3 class="footer-title">Made with ❤️ for Rajashree Dhar</h3>
+      <p class="footer-msg">
+        May every candle you blow, every wish you make, and every dream you chase<br />
+        bring you closer to the life you deserve. <strong>Happy Birthday, beautiful!</strong> 🎂✨
+      </p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        <a href="#" class="social-btn" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+      </div>
+      <p class="footer-copy">Crafted with love, just for you 🌸 © 2026</p>
+    </div>
+  </footer>
+
+  <!-- === BIRTHDAY TOAST MODAL === -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose" aria-label="Close"><i class="fas fa-xmark"></i></button>
+      <div class="modal-confetti-area" id="modalConfetti"></div>
+      <div class="modal-emoji">🥂</div>
+      <h2 class="modal-title">Cheers, Bestie!</h2>
+      <p class="modal-msg">
+        The champagne is popping, the confetti is flying, and the whole virtual world is celebrating you! 🎉<br />
+        Keep smiling, keep slaying.
+      </p>
+      <div class="modal-gifts">
+        <span>🍾</span><span>🥂</span><span>✨</span><span>🌟</span><span>💖</span>
+      </div>
+      <button class="btn-primary" id="modalDismiss" style="background: linear-gradient(135deg, #f1c40f, #f39c12); color:#fff; box-shadow: 0 5px 20px rgba(241,196,15,0.4);">Cheers! ✨</button>
+    </div>
+  </div>
+
+  <!-- === BIRTHDAY BLAST OVERLAY (Triggered on page load) === -->
+  <div class="blast-overlay" id="blastOverlay">
+    <div class="blast-content">
+      <h1 class="blast-title">🎂 ITS YOUR BIRTHDAY! 🎂</h1>
+      <p class="blast-subtitle">Welcome to the biggest day of the year, Rajashree Dhar!</p>
+      
+      <div class="blast-photos-container">
+        <!-- We use random photos from src folder with scattered positions -->
+        <div class="blast-photo delay-1" style="--rot:-15deg; --x:-35vw; --y:-22vh;"><img src="src/1699598722875.jpg" alt="Memory"></div>
+        <div class="blast-photo delay-2" style="--rot:18deg; --x:32vw; --y:-26vh;"><img src="src/IMG-20231111-WA0040.jpg" alt="Memory"></div>
+        <div class="blast-photo delay-3" style="--rot:-10deg; --x:-22vw; --y:28vh;"><img src="src/IMG_20240323_184223_827.jpg" alt="Memory"></div>
+        <div class="blast-photo delay-4" style="--rot:22deg; --x:28vw; --y:32vh;"><img src="src/IMG-20251210-WA0777.jpg" alt="Memory"></div>
+        <div class="blast-photo delay-5" style="--rot:-6deg; --x:-12vw; --y:-38vh;"><img src="src/IMG_20250703_125844.jpg" alt="Memory"></div>
+        <div class="blast-photo delay-6" style="--rot:12deg; --x:42vw; --y:-2vh;"><img src="src/Snapchat-1573921257.jpg" alt="Memory"></div>
+        <div class="blast-photo delay-7" style="--rot:-20deg; --x:-44vw; --y:8vh;"><img src="src/IMG-20241007-WA0177.jpg" alt="Memory"></div>
+        <div class="blast-photo delay-8 center-photo" style="--rot:5deg; --x:0; --y:5vh; --scale:1.6;"><img src="src/IMG-20240130-WA0098.jpg" alt="Center Memory"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === BACKGROUND MUSIC === -->
+  <audio id="bgMusic" loop preload="auto" autoplay>
+    <!-- Removed specific type attribute securely allowing Chrome/Safari to auto-detect WhatsApp MPEG codecs -->
+    <source src="src/music/WhatsApp Audio 2026-04-03 at 10.56.51 PM.mpeg">
+  </audio>
+
+  <!-- Music Toggle Button -->
+  <button id="musicToggleBtn" class="music-toggle" aria-label="Toggle Music">
+    <i class="fas fa-music"></i>
+  </button>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
