@@ -1229,98 +1229,72 @@ console.log('%c✨ This page was made with love, just for you! ✨', 'color: #a8
 })();
 
 /* ===================================================
-   22. DYNAMIC IMAGES IN CAKE TIER & FOOTER SLIDER
+   NEW: DYNAMIC ASSETS LOADING (Cake Faces & Footer)
    =================================================== */
-(function initDynamicImages() {
-  const srcImages = [
-    "src/1699598722875.jpg", "src/1699598724565.jpg", "src/1707760858213.jpg",
-    "src/IMG-20231111-WA0040.jpg", "src/IMG-20240117-WA0134.jpg", "src/IMG-20240130-WA0098.jpg",
-    "src/IMG-20240404-WA0025.jpg", "src/IMG-20241007-WA0177.jpg", "src/IMG-20241217-WA0076.jpg",
-    "src/IMG-20241217-WA0084.jpg", "src/IMG-20250225-WA0013.jpg", "src/IMG-20250228-WA0002.jpg",
-    "src/IMG-20250327-WA0033.jpg", "src/IMG-20250403-WA0665.jpg", "src/IMG-20250410-WA0101.jpg",
-    "src/IMG-20250429-WA0053.jpg", "src/IMG-20250506-WA0016.jpg", "src/IMG-20250728-WA0016.jpg",
-    "src/IMG-20250929-WA0062.jpg", "src/IMG-20251015-WA0346.jpg", "src/IMG-20251210-WA0777.jpg",
-    "src/IMG_20240323_184223_827.jpg", "src/IMG_20250611_154055.jpg", "src/IMG_20250703_125815.jpg",
-    "src/IMG_20250703_125844.jpg", "src/IMG_20250703_130734.jpg", "src/IMG_20250928_113641.jpg",
-    "src/IMG_20250928_171847.jpg", "src/IMG_20251015_165704.jpg", "src/Snapchat-1573921257.jpg",
-    "src/Snapchat-1829057751.jpg", "src/Snapchat-30221113-1.jpg", "src/Snapchat-30221113.jpg",
-    "src/Snapchat-464783577.jpg"
+(function initDynamicAssets() {
+  const images = [
+    '1699598722875.jpg', '1699598724565.jpg', '1707760858213.jpg',
+    'IMG-20231111-WA0040.jpg', 'IMG-20240117-WA0134.jpg', 'IMG-20240130-WA0098.jpg',
+    'IMG-20240404-WA0025.jpg', 'IMG-20241007-WA0177.jpg', 'IMG-20241217-WA0076.jpg',
+    'IMG-20241217-WA0084.jpg', 'IMG-20250225-WA0013.jpg', 'IMG-20250228-WA0002.jpg',
+    'IMG-20250327-WA0033.jpg', 'IMG-20250403-WA0665.jpg', 'IMG-20250410-WA0101.jpg',
+    'IMG-20250429-WA0053.jpg', 'IMG-20250410-WA0101.jpg', 'IMG-20250506-WA0016.jpg',
+    'IMG-20250728-WA0016.jpg', 'IMG-20250929-WA0062.jpg', 'IMG-20251015-WA0346.jpg',
+    'IMG-20251210-WA0777.jpg', 'IMG_20240323_184223_827.jpg', 'IMG_20250611_154055.jpg',
+    'IMG_20250703_125815.jpg', 'IMG_20250703_125844.jpg', 'IMG_20250703_130734.jpg',
+    'IMG_20250928_113641.jpg', 'IMG_20250928_171847.jpg', 'IMG_20251015_165704.jpg',
+    'Snapchat-1573921257.jpg', 'Snapchat-1829057751.jpg', 'Snapchat-30221113-1.jpg',
+    'Snapchat-30221113.jpg', 'Snapchat-464783577.jpg'
   ];
 
-  /* 1. BUILD THE FOOTER SLIDER */
-  const footerContainer = document.getElementById('footerSliderContainer');
-  if (footerContainer) {
-    // We create a scrolling track with two identical sets to create a seamless loop
-    const track = document.createElement('div');
-    track.className = 'marquee-track';
-
-    const buildSet = () => {
-      const set = document.createElement('div');
-      set.className = 'marquee-set';
-      srcImages.forEach(imgSrc => {
-        const img = document.createElement('img');
-        img.className = 'marquee-img footer-slide-img';
-        img.src = imgSrc;
-        img.alt = 'Memory';
-        img.loading = 'lazy';
-        set.appendChild(img);
-      });
-      return set;
-    };
-
-    track.appendChild(buildSet());
-    track.appendChild(buildSet()); // Duplicate for loop
-    footerContainer.appendChild(track);
-  }
-
-  /* 2. BUILD THE CAKE FACES */
-  // We divide the images randomly into the 3 tiers
-  const shuffledImages = [...srcImages].sort(() => 0.5 - Math.random());
-  const thirdCount = Math.floor(shuffledImages.length / 3);
-  
-  const tierImages = [
-    shuffledImages.slice(0, thirdCount),
-    shuffledImages.slice(thirdCount, thirdCount*2),
-    shuffledImages.slice(thirdCount*2)
+  // 1. Populate Cake Faces with Scrolling Track
+  const cakeTiers = [
+    { id: 'cakeTopFaces', count: 12, speed: '18s' },
+    { id: 'cakeMidFaces', count: 15, speed: '22s' },
+    { id: 'cakeBottomFaces', count: 18, speed: '26s' }
   ];
 
-  const tiers = [
-    document.getElementById('cakeTopTierFaces'),
-    document.getElementById('cakeMidTierFaces'),
-    document.getElementById('cakeBottomTierFaces')
-  ];
-
-  tiers.forEach((tierEl, index) => {
-    if (!tierEl) return;
+  let usedImages = 0;
+  cakeTiers.forEach(tier => {
+    const container = document.getElementById(tier.id);
+    if (!container) return;
     
-    // Create the rotating band container
-    const trackWrapper = document.createElement('div');
-    trackWrapper.className = 'cake-faces-track-wrapper';
+    // Create a track for the faces
     const track = document.createElement('div');
-    // alternate directions per tier for better effect!
-    const directionClass = index % 2 === 0 ? 'scroll-right-to-left' : 'scroll-left-to-right';
-    track.className = 'cake-faces-track ' + directionClass;
-
-    const buildCakeSet = () => {
-      const set = document.createElement('div');
-      set.className = 'cake-faces-set';
-      tierImages[index].forEach(imgSrc => {
-        const faceFrame = document.createElement('div');
-        faceFrame.className = 'cake-face-frame';
-        const img = document.createElement('img');
-        img.src = imgSrc;
-        img.alt = 'Face';
-        faceFrame.appendChild(img);
-        set.appendChild(faceFrame);
-      });
-      return set;
-    };
-
-    track.appendChild(buildCakeSet());
-    track.appendChild(buildCakeSet()); // duplicate for looping inside the cake band
+    track.className = 'cake-face-track';
+    track.style.animationDuration = tier.speed; // Varied speeds for more natural look
     
-    trackWrapper.appendChild(track);
-    // Insert at beginning of tier
-    tierEl.insertBefore(trackWrapper, tierEl.firstChild);
+    // Pick unique-ish images for this tier's set
+    const tierSet = [];
+    for (let i = 0; i < tier.count; i++) {
+        tierSet.push(images[usedImages % images.length]);
+        usedImages++;
+    }
+    
+    // Duplicate set for seamless looping
+    const infiniteSet = [...tierSet, ...tierSet];
+    infiniteSet.forEach(imgName => {
+        const img = document.createElement('img');
+        img.src = `src/${imgName}`;
+        img.className = 'cake-face';
+        img.alt = 'Decoration';
+        track.appendChild(img);
+    });
+    
+    container.innerHTML = ''; // Clear initial placeholders
+    container.appendChild(track);
   });
+
+  // 2. Populate Footer Marquee (Infinite Loop)
+  const marqueeTrack = document.getElementById('dynamicFooterTrack');
+  if (marqueeTrack) {
+    // Duplicate the list for seamless right-to-left loop
+    const fullList = [...images, ...images];
+    fullList.forEach(imgName => {
+      const card = document.createElement('div');
+      card.className = 'marquee-face-card';
+      card.innerHTML = `<img src="src/${imgName}" alt="Memory" loading="lazy">`;
+      marqueeTrack.appendChild(card);
+    });
+  }
 })();
