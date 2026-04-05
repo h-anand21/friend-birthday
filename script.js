@@ -590,7 +590,43 @@ function highlightActiveNav() {
    =================================================== */
 window.showBirthdayBlast = function() {
   const blastOverlay = document.getElementById('blastOverlay');
-  if (!blastOverlay) return;
+  const blastContainer = document.getElementById('blastPhotosContainer');
+  if (!blastOverlay || !blastContainer) return;
+
+  // Additional images to explosion list
+  const extraPhotos = [
+    'src/group pic of friend/1699598723588.jpg', 'src/group pic of friend/IMG-20231213-WA0019.jpg',
+    'src/group pic of friend/IMG-20240117-WA0053.jpg', 'src/group pic of friend/IMG-20240126-WA0081.jpg',
+    'src/group pic of friend/IMG-20240221-WA0080.jpg', 'src/group pic of friend/IMG-20240419-WA0263.jpg',
+    'src/group pic of friend/IMG-20240928-WA0056.jpg', 'src/group pic of friend/IMG-20241217-WA0064.jpg',
+    'src/group pic of friend/IMG-20250211-WA0040.jpg', 'src/group pic of friend/IMG-20250611-WA0105.jpg',
+    'src/group pic of friend/IMG_0345.jpg', 'src/group pic of friend/IMG_20250928_183404.jpg',
+    'src/friends/deepak.jpg', 'src/friends/gaurav.jpg', 'src/friends/himu.jpg', 
+    'src/friends/krish.jpg', 'src/friends/shreya.jpg', 'src/friends/polo.jpg',
+    'src/1699598724565.jpg', 'src/1707760858213.jpg', 'src/IMG-20240117-WA0134.jpg',
+    'src/IMG-20240404-WA0025.jpg', 'src/IMG-20241217-WA0084.jpg', 'src/IMG-20250228-WA0002.jpg',
+    'src/IMG-20250506-WA0016.jpg', 'src/IMG-20250929-WA0062.jpg', 'src/IMG-20251015-WA0346.jpg',
+    'src/IMG_20250703_125815.jpg', 'src/IMG_20251015_165704.jpg', 'src/Snapchat-1829057751.jpg',
+    'src/Snapchat-30221113.jpg', 'src/Snapchat-464783577.jpg'
+  ];
+
+  // Shuffle and pick around 12–15 more to avoid over-cluttering but look full
+  const selectedExtras = extraPhotos.sort(() => 0.5 - Math.random()).slice(0, 18);
+
+  selectedExtras.forEach(src => {
+    const photoDiv = document.createElement('div');
+    photoDiv.className = 'blast-photo';
+    
+    // Random scattered positions
+    const rx = (Math.random() * 80 - 40) + 'vw';
+    const ry = (Math.random() * 70 - 35) + 'vh';
+    const rot = (Math.random() * 50 - 25) + 'deg';
+    const scale = (Math.random() * 0.4 + 0.8);
+    
+    photoDiv.style.cssText = `--x: ${rx}; --y: ${ry}; --rot: ${rot}; --scale: ${scale};`;
+    photoDiv.innerHTML = `<img src="${src}" alt="Memory">`;
+    blastContainer.appendChild(photoDiv);
+  });
   
   // Instantly show the overlay on load
   blastOverlay.classList.add('active');
@@ -1232,20 +1268,45 @@ console.log('%c✨ This page was made with love, just for you! ✨', 'color: #a8
    NEW: DYNAMIC ASSETS LOADING (Cake Faces & Footer)
    =================================================== */
 (function initDynamicAssets() {
-  const images = [
-    '1699598722875.jpg', '1699598724565.jpg', '1707760858213.jpg',
-    'IMG-20231111-WA0040.jpg', 'IMG-20240117-WA0134.jpg', 'IMG-20240130-WA0098.jpg',
-    'IMG-20240404-WA0025.jpg', 'IMG-20241007-WA0177.jpg', 'IMG-20241217-WA0076.jpg',
-    'IMG-20241217-WA0084.jpg', 'IMG-20250225-WA0013.jpg', 'IMG-20250228-WA0002.jpg',
-    'IMG-20250327-WA0033.jpg', 'IMG-20250403-WA0665.jpg', 'IMG-20250410-WA0101.jpg',
-    'IMG-20250429-WA0053.jpg', 'IMG-20250410-WA0101.jpg', 'IMG-20250506-WA0016.jpg',
-    'IMG-20250728-WA0016.jpg', 'IMG-20250929-WA0062.jpg', 'IMG-20251015-WA0346.jpg',
-    'IMG-20251210-WA0777.jpg', 'IMG_20240323_184223_827.jpg', 'IMG_20250611_154055.jpg',
-    'IMG_20250703_125815.jpg', 'IMG_20250703_125844.jpg', 'IMG_20250703_130734.jpg',
-    'IMG_20250928_113641.jpg', 'IMG_20250928_171847.jpg', 'IMG_20251015_165704.jpg',
-    'Snapchat-1573921257.jpg', 'Snapchat-1829057751.jpg', 'Snapchat-30221113-1.jpg',
-    'Snapchat-30221113.jpg', 'Snapchat-464783577.jpg'
+  const baseImages = [
+    'src/1699598722875.jpg', 'src/1699598724565.jpg', 'src/1707760858213.jpg',
+    'src/IMG-20231111-WA0040.jpg', 'src/IMG-20240117-WA0134.jpg', 'src/IMG-20240130-WA0098.jpg',
+    'src/IMG-20240404-WA0025.jpg', 'src/IMG-20241007-WA0177.jpg', 'src/IMG-20241217-WA0076.jpg',
+    'src/IMG-20241217-WA0084.jpg', 'src/IMG-20250225-WA0013.jpg', 'src/IMG-20250228-WA0002.jpg',
+    'src/IMG-20250327-WA0033.jpg', 'src/IMG-20250403-WA0665.jpg', 'src/IMG-20250410-WA0101.jpg',
+    'src/IMG-20250429-WA0053.jpg', 'src/IMG-20250506-WA0016.jpg', 'src/IMG-20250728-WA0016.jpg',
+    'src/IMG-20250929-WA0062.jpg', 'src/IMG-20251015-WA0346.jpg', 'src/IMG-20251210-WA0777.jpg',
+    'src/IMG_20240323_184223_827.jpg', 'src/IMG_20250611_154055.jpg', 'src/IMG_20250703_125815.jpg',
+    'src/IMG_20250703_125844.jpg', 'src/IMG_20250703_130734.jpg', 'src/IMG_20250928_113641.jpg',
+    'src/IMG_20250928_171847.jpg', 'src/IMG_20251015_165704.jpg', 'src/Snapchat-1573921257.jpg',
+    'src/Snapchat-1829057751.jpg', 'src/Snapchat-30221113-1.jpg', 'src/Snapchat-30221113.jpg',
+    'src/Snapchat-464783577.jpg'
   ];
+
+  const groupImages = [
+    'src/group pic of friend/1699598723588.jpg', 'src/group pic of friend/IMG-20231005-WA0067.jpg',
+    'src/group pic of friend/IMG-20231213-WA0019.jpg', 'src/group pic of friend/IMG-20240108-WA0025.jpg',
+    'src/group pic of friend/IMG-20240117-WA0053.jpg', 'src/group pic of friend/IMG-20240126-WA0081.jpg',
+    'src/group pic of friend/IMG-20240221-WA0080.jpg', 'src/group pic of friend/IMG-20240419-WA0263.jpg',
+    'src/group pic of friend/IMG-20240615-WA0014.jpg', 'src/group pic of friend/IMG-20241217-WA0064.jpg',
+    'src/group pic of friend/IMG_0345.jpg', 'src/group pic of friend/IMG_20250928_183404.jpg'
+  ];
+
+  const friendImages = [
+    'src/friends/arisha.jpg', 'src/friends/deepak.jpg', 'src/friends/gaurav.jpg',
+    'src/friends/himu.jpg', 'src/friends/krish.jpg', 'src/friends/niloy.jpg',
+    'src/friends/partiksha.jpg', 'src/friends/polo.jpg', 'src/friends/shiny.jpg',
+    'src/friends/shreya.jpg'
+  ];
+
+  // Interleave everything for the Scrolling Memories (1 src -> 1 friend -> 1 group)
+  const allImages = [];
+  const maxImages = Math.max(baseImages.length, groupImages.length, friendImages.length);
+  for (let i = 0; i < maxImages; i++) {
+    if (i < baseImages.length) allImages.push(baseImages[i]);
+    if (i < friendImages.length) allImages.push(friendImages[i]);
+    if (i < groupImages.length) allImages.push(groupImages[i]);
+  }
 
   // 1. Populate Cake Faces with Scrolling Track
   const cakeTiers = [
@@ -1262,26 +1323,24 @@ console.log('%c✨ This page was made with love, just for you! ✨', 'color: #a8
     // Create a track for the faces
     const track = document.createElement('div');
     track.className = 'cake-face-track';
-    track.style.animationDuration = tier.speed; // Varied speeds for more natural look
+    track.style.animationDuration = tier.speed; 
     
-    // Pick unique-ish images for this tier's set
     const tierSet = [];
     for (let i = 0; i < tier.count; i++) {
-        tierSet.push(images[usedImages % images.length]);
+        tierSet.push(allImages[usedImages % allImages.length]);
         usedImages++;
     }
     
-    // Duplicate set for seamless looping
     const infiniteSet = [...tierSet, ...tierSet];
-    infiniteSet.forEach(imgName => {
+    infiniteSet.forEach(imgSrc => {
         const img = document.createElement('img');
-        img.src = `src/${imgName}`;
+        img.src = imgSrc;
         img.className = 'cake-face';
         img.alt = 'Decoration';
         track.appendChild(img);
     });
     
-    container.innerHTML = ''; // Clear initial placeholders
+    container.innerHTML = '';
     container.appendChild(track);
   });
 
@@ -1289,11 +1348,11 @@ console.log('%c✨ This page was made with love, just for you! ✨', 'color: #a8
   const marqueeTrack = document.getElementById('dynamicFooterTrack');
   if (marqueeTrack) {
     // Duplicate the list for seamless right-to-left loop
-    const fullList = [...images, ...images];
-    fullList.forEach(imgName => {
+    const fullList = [...allImages, ...allImages];
+    fullList.forEach(imgSrc => {
       const card = document.createElement('div');
       card.className = 'marquee-face-card';
-      card.innerHTML = `<img src="src/${imgName}" alt="Memory" loading="lazy">`;
+      card.innerHTML = `<img src="${imgSrc}" alt="Memory" loading="lazy">`;
       marqueeTrack.appendChild(card);
     });
   }

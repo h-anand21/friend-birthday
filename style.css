@@ -1711,9 +1711,6 @@ body {
   .cake-face { width: 26px !important; height: 26px !important; }
 }
 
-/* =====================================================
-   GSAP PERFORMANCE & SMOOTHING
-   ===================================================== */
 .photo-card, .message-card, .fw-card, .marquee-img, .hero-content > *, .hero-portrait-wrap, .btn-primary, .btn-ghost, .social-btn {
   will-change: transform, opacity;
   transform: translate3d(0, 0, 0); /* Force GPU acceleration */
