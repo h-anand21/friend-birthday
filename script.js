@@ -1227,3 +1227,100 @@ console.log('%c✨ This page was made with love, just for you! ✨', 'color: #a8
     document.addEventListener(evt, autoPlay, { once: true });
   });
 })();
+
+/* ===================================================
+   22. DYNAMIC IMAGES IN CAKE TIER & FOOTER SLIDER
+   =================================================== */
+(function initDynamicImages() {
+  const srcImages = [
+    "src/1699598722875.jpg", "src/1699598724565.jpg", "src/1707760858213.jpg",
+    "src/IMG-20231111-WA0040.jpg", "src/IMG-20240117-WA0134.jpg", "src/IMG-20240130-WA0098.jpg",
+    "src/IMG-20240404-WA0025.jpg", "src/IMG-20241007-WA0177.jpg", "src/IMG-20241217-WA0076.jpg",
+    "src/IMG-20241217-WA0084.jpg", "src/IMG-20250225-WA0013.jpg", "src/IMG-20250228-WA0002.jpg",
+    "src/IMG-20250327-WA0033.jpg", "src/IMG-20250403-WA0665.jpg", "src/IMG-20250410-WA0101.jpg",
+    "src/IMG-20250429-WA0053.jpg", "src/IMG-20250506-WA0016.jpg", "src/IMG-20250728-WA0016.jpg",
+    "src/IMG-20250929-WA0062.jpg", "src/IMG-20251015-WA0346.jpg", "src/IMG-20251210-WA0777.jpg",
+    "src/IMG_20240323_184223_827.jpg", "src/IMG_20250611_154055.jpg", "src/IMG_20250703_125815.jpg",
+    "src/IMG_20250703_125844.jpg", "src/IMG_20250703_130734.jpg", "src/IMG_20250928_113641.jpg",
+    "src/IMG_20250928_171847.jpg", "src/IMG_20251015_165704.jpg", "src/Snapchat-1573921257.jpg",
+    "src/Snapchat-1829057751.jpg", "src/Snapchat-30221113-1.jpg", "src/Snapchat-30221113.jpg",
+    "src/Snapchat-464783577.jpg"
+  ];
+
+  /* 1. BUILD THE FOOTER SLIDER */
+  const footerContainer = document.getElementById('footerSliderContainer');
+  if (footerContainer) {
+    // We create a scrolling track with two identical sets to create a seamless loop
+    const track = document.createElement('div');
+    track.className = 'marquee-track';
+
+    const buildSet = () => {
+      const set = document.createElement('div');
+      set.className = 'marquee-set';
+      srcImages.forEach(imgSrc => {
+        const img = document.createElement('img');
+        img.className = 'marquee-img footer-slide-img';
+        img.src = imgSrc;
+        img.alt = 'Memory';
+        img.loading = 'lazy';
+        set.appendChild(img);
+      });
+      return set;
+    };
+
+    track.appendChild(buildSet());
+    track.appendChild(buildSet()); // Duplicate for loop
+    footerContainer.appendChild(track);
+  }
+
+  /* 2. BUILD THE CAKE FACES */
+  // We divide the images randomly into the 3 tiers
+  const shuffledImages = [...srcImages].sort(() => 0.5 - Math.random());
+  const thirdCount = Math.floor(shuffledImages.length / 3);
+  
+  const tierImages = [
+    shuffledImages.slice(0, thirdCount),
+    shuffledImages.slice(thirdCount, thirdCount*2),
+    shuffledImages.slice(thirdCount*2)
+  ];
+
+  const tiers = [
+    document.getElementById('cakeTopTierFaces'),
+    document.getElementById('cakeMidTierFaces'),
+    document.getElementById('cakeBottomTierFaces')
+  ];
+
+  tiers.forEach((tierEl, index) => {
+    if (!tierEl) return;
+    
+    // Create the rotating band container
+    const trackWrapper = document.createElement('div');
+    trackWrapper.className = 'cake-faces-track-wrapper';
+    const track = document.createElement('div');
+    // alternate directions per tier for better effect!
+    const directionClass = index % 2 === 0 ? 'scroll-right-to-left' : 'scroll-left-to-right';
+    track.className = 'cake-faces-track ' + directionClass;
+
+    const buildCakeSet = () => {
+      const set = document.createElement('div');
+      set.className = 'cake-faces-set';
+      tierImages[index].forEach(imgSrc => {
+        const faceFrame = document.createElement('div');
+        faceFrame.className = 'cake-face-frame';
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = 'Face';
+        faceFrame.appendChild(img);
+        set.appendChild(faceFrame);
+      });
+      return set;
+    };
+
+    track.appendChild(buildCakeSet());
+    track.appendChild(buildCakeSet()); // duplicate for looping inside the cake band
+    
+    trackWrapper.appendChild(track);
+    // Insert at beginning of tier
+    tierEl.insertBefore(trackWrapper, tierEl.firstChild);
+  });
+})();

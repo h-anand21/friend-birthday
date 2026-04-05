@@ -253,47 +253,10 @@
   </section>
 
   <!-- === SEAMLESS FULL-WIDTH MARQUEE SECTION === -->
-  <section class="marquee-section-container">
+  <section class="marquee-section-container" id="dynamicFooterSlider">
     <!-- Infinite Left-to-Right Scrolling Marquee for remaining unseen beautiful pictures! -->
-    <div class="photo-marquee">
-      <div class="marquee-track">
-        <!-- Exact Duplicate Set 1 -->
-        <div class="marquee-set">
-          <img class="marquee-img" src="src/1699598724565.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20241217-WA0084.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250403-WA0665.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250410-WA0101.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250429-WA0053.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250506-WA0016.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250728-WA0016.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250929-WA0062.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250611_154055.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250703_125815.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250703_130734.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250928_113641.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250928_171847.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20251015_165704.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/Snapchat-30221113-1.jpg" alt="Memory" loading="lazy">
-        </div>
-        <!-- Exact Duplicate Set 2 strictly required for creating seamless mathematical loop -->
-        <div class="marquee-set">
-          <img class="marquee-img" src="src/1699598724565.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20241217-WA0084.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250403-WA0665.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250410-WA0101.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250429-WA0053.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250506-WA0016.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250728-WA0016.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG-20250929-WA0062.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250611_154055.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250703_125815.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250703_130734.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250928_113641.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20250928_171847.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/IMG_20251015_165704.jpg" alt="Memory" loading="lazy">
-          <img class="marquee-img" src="src/Snapchat-30221113-1.jpg" alt="Memory" loading="lazy">
-        </div>
-      </div>
+    <div class="photo-marquee" id="footerSliderContainer">
+      <!-- Injected by script.js -->
     </div>
   </section>
 
@@ -329,20 +292,23 @@
         </div>
 
         <!-- Cake Tiers -->
-        <div class="cake-top-tier">
+        <div class="cake-top-tier cake-tier-with-faces" id="cakeTopTierFaces">
           <div class="cake-decoration">
             <div class="deco-pearl"></div><div class="deco-pearl"></div><div class="deco-pearl"></div>
             <div class="deco-pearl"></div><div class="deco-pearl"></div>
           </div>
+          <!-- Injected dynamically via JS: <div class="cake-faces-track"></div> -->
           <div class="frosting-drip"></div>
         </div>
-        <div class="cake-mid-tier">
+        <div class="cake-mid-tier cake-tier-with-faces" id="cakeMidTierFaces">
+          <!-- Injected dynamically via JS -->
           <div class="cake-flower">🌸</div>
           <div class="cake-flower">🌸</div>
           <div class="cake-flower">🌸</div>
           <div class="frosting-drip"></div>
         </div>
-        <div class="cake-bottom-tier">
+        <div class="cake-bottom-tier cake-tier-with-faces" id="cakeBottomTierFaces">
+          <!-- Injected dynamically via JS -->
           <div class="cake-text-wrap">
             <span class="cake-text">Happy Birthday!</span>
           </div>
