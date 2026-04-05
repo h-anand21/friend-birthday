@@ -62,8 +62,9 @@
       ctx.save();
       ctx.globalAlpha = Math.max(0, this.alpha) * glow;
       ctx.fillStyle = this.color;
-      ctx.shadowColor = this.color;
-      ctx.shadowBlur  = 8;
+      // Shadow removed for performance
+      // ctx.shadowColor = this.color;
+      // ctx.shadowBlur  = 8;
 
       // Draw 4-pointed star
       ctx.beginPath();
@@ -83,7 +84,7 @@
   }
 
   // Create initial sparkles
-  for (let i = 0; i < 60; i++) particles.push(new Sparkle());
+  for (let i = 0; i < 30; i++) particles.push(new Sparkle());
 
   function animateSparkles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -142,8 +143,9 @@ class ConfettiPiece {
     confettiCtx.save();
     confettiCtx.globalAlpha  = Math.max(0, this.opacity);
     confettiCtx.fillStyle    = this.color;
-    confettiCtx.shadowColor  = this.color;
-    confettiCtx.shadowBlur   = 4;
+    // Shadow removed for performance
+    // confettiCtx.shadowColor  = this.color;
+    // confettiCtx.shadowBlur   = 4;
     confettiCtx.translate(this.x, this.y);
     confettiCtx.rotate(this.rotation);
 
@@ -610,8 +612,8 @@ window.showBirthdayBlast = function() {
     'src/Snapchat-30221113.jpg', 'src/Snapchat-464783577.jpg'
   ];
 
-  // Shuffle and pick around 12–15 more to avoid over-cluttering but look full
-  const selectedExtras = extraPhotos.sort(() => 0.5 - Math.random()).slice(0, 18);
+  // Shuffle and pick around 8 more to avoid over-cluttering but look full
+  const selectedExtras = extraPhotos.sort(() => 0.5 - Math.random()).slice(0, 8);
 
   selectedExtras.forEach(src => {
     const photoDiv = document.createElement('div');
@@ -720,7 +722,7 @@ window.showBirthdayBlast();
 // Tiny click spark effect (The "Star" effect!)
 function createClickSpark(x, y) {
   const emojis = ['✨', '⭐', '🌟', '💫', '💖'];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 2; i++) {
     const spark = document.createElement('div');
     spark.textContent = emojis[Math.floor(Math.random() * emojis.length)];
     spark.style.cssText = `
@@ -1337,6 +1339,8 @@ console.log('%c✨ This page was made with love, just for you! ✨', 'color: #a8
         img.src = imgSrc;
         img.className = 'cake-face';
         img.alt = 'Decoration';
+        img.loading = 'lazy';
+        img.decoding = 'async';
         track.appendChild(img);
     });
     
@@ -1352,7 +1356,7 @@ console.log('%c✨ This page was made with love, just for you! ✨', 'color: #a8
     fullList.forEach(imgSrc => {
       const card = document.createElement('div');
       card.className = 'marquee-face-card';
-      card.innerHTML = `<img src="${imgSrc}" alt="Memory" loading="lazy">`;
+      card.innerHTML = `<img src="${imgSrc}" alt="Memory" loading="lazy" decoding="async">`;
       marqueeTrack.appendChild(card);
     });
   }

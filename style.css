@@ -50,8 +50,9 @@
   --radius-lg: 28px;
   --radius-xl: 40px;
   --radius-full: 9999px;
-  --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  --bounce: all 0.5s cubic-bezier(0.68,-0.55,0.27,1.55);
+  --transition: opacity 0.3s, transform 0.3s, background 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+  --transition-fast: opacity 0.2s, transform 0.2s;
+  --bounce: transform 0.5s cubic-bezier(0.68,-0.55,0.27,1.55);
 }
 
 /* === RESET === */
@@ -346,8 +347,8 @@ body {
   display:flex; align-items:center; justify-content:space-between;
   padding:12px 20px 12px 16px;
   background:rgba(18,10,30,0.75);
-  backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
   border:1px solid rgba(155,93,229,0.25);
   border-radius: var(--radius-full);
   box-shadow:0 4px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
@@ -817,6 +818,7 @@ body {
   display:flex; width:max-content;
   /* Left to right infinite scroll by moving from -50% back to 0 */
   animation:scrollLeftToRight 50s linear infinite;
+  will-change: transform;
 }
 .marquee-track:hover { animation-play-state:paused; }
 .marquee-set {
