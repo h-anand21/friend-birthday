@@ -1,0 +1,93 @@
+{
+  "project": {
+    "name": "Birthday Celebration UI — Rajashree Dhar Edition",
+    "theme": "Modern Dark Mode / Celebration",
+    "target_date": "April 4th, 2026",
+    "vibe": "Premium, Magical, Soft Glow, Interactive"
+  },
+  "design_tokens": {
+    "colors_palette": {
+      "background": {
+        "base": "#0d0a14",
+        "section_1": "#120d1e",
+        "card": "#1e1530"
+      },
+      "accents": {
+        "neon_pink": "#f72585",
+        "neon_purple": "#9b5de5",
+        "birthday_gold": "#ffd166",
+        "soft_pink": "#ff6eb4"
+      },
+      "gradients": {
+        "hero_background": "linear-gradient(135deg, #0d0a14 0%, #1a0a2e 40%, #2d0e4f 70%, #180824 100%)",
+        "primary_button": "linear-gradient(135deg, #f72585, #7209b7)",
+        "glowing_borders": "linear-gradient(135deg, #f72585, #9b5de5)"
+      }
+    },
+    "typography": {
+      "headings": "'Playfair Display', serif",
+      "body": "'Nunito', sans-serif",
+      "handwriting": "'Dancing Script', cursive"
+    },
+    "effects": {
+      "glassmorphism": "backdrop-filter: blur(24px) with subtle border-color opacity",
+      "shadows": "Glowing shadows (0 0 24px pink) for key interactive elements",
+      "border_radius": "radius-full (pills), radius-lg (cards), radius-xl (containers)"
+    }
+  },
+  "core_sections": [
+    {
+      "id": "hero",
+      "title": "Magical Entrance",
+      "features": ["Particle stars", "Floating portrait with auto-rotate thumbs", "Countdown timer", "Floating image orbs"],
+      "logic": "Auto-rotates between 4 top memories"
+    },
+    {
+      "id": "memories",
+      "title": "Captured Moments",
+      "type": "Polaroid Grid",
+      "features": ["Hover rotation", "Lightbox preview", "Custom stickers (hearts, flowers)"]
+    },
+    {
+      "id": "scrolling_marquee",
+      "title": "Infinite Memory Strip",
+      "type": "Horizontal Marquee",
+      "direction": "Right to Left",
+      "speed": "40s loop",
+      "content": "Uses all images from /src folder"
+    },
+    {
+      "id": "cake",
+      "title": "3D Dynamic Birthday Cake",
+      "design": "3-Tiered CSS Cake",
+      "special_feature": "Auto-scrolling face decorations on tiers",
+      "interactions": ["Blow function triggers confetti", "Virtual crowd explosion", "Wish granted overlay"]
+    },
+    {
+      "id": "messages",
+      "title": "Friends Carousel",
+      "type": "Sliding Track",
+      "features": ["Personalized cards", "Avatar rings", "Interactive envelope with letter reveal"]
+    },
+    {
+      "id": "gift",
+      "title": "Digital Surprise Box",
+      "type": "3D Gift Box",
+      "interaction": "Lid pops off with spring animation to reveal Polaroid"
+    },
+    {
+      "id": "footer",
+      "title": "Premium Closure",
+      "features": ["Floating hearts", "Interactive Spotify Music Card", "Instagram Profile Dashboard Card"]
+    }
+  ],
+  "animations": {
+    "background": ["Canvas Sparkles", "Confetti Rain", "Floating Bubbles/Balloons"],
+    "interactive": ["Cake marquee (faces move horizontally)", "Heartbeat icon", "Swaying floral decorations"],
+    "scroll": "Reveal-on-scroll (fade up and slide in)"
+  },
+  "tech_stack": {
+    "frontend": "HTML5, CSS3 (Vanilla), JavaScript (ES6+)",
+    "assets": "Dynamically loaded via script.js from local /src folder"
+  }
+}
